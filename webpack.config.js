@@ -19,11 +19,12 @@ module.exports = {
             }
         ]
     },
-
     devServer: {
         static: {
             directory: path.join(__dirname, 'public'),
         },
         port: 9000,
-    }
+    },
+    mode: 'development'
 }
+

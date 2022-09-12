@@ -1,57 +1,193 @@
 $playfield-border: solid black;
-$btn-radius: 24px;
+$btn-radius: 26px;
+$modal-radius: 30px;
+$player-font-size: 32px;
+$input-width: 400px;
+$input-height: 8vh;
+
+$cell-background: #f0f098;
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+button {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  width: $input-width;
+  height: $input-height;
+  border-radius: $btn-radius;
+  padding: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+input:hover {
+  box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.905);
+  display: grid;
+  place-content: center;
+  z-index: -1;
+  opacity: 0;
+
+  .modal-window {
+    width: 600px;
+    height: 70vh;
+    background-color: rgb(197, 70, 70);
+    border-radius: $modal-radius;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 25px;
+    
+
+    .modal-header {
+      font-size: $player-font-size * 1.5;
+      font-weight: 500;
+      height: 20%;
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+
+    .modal-content {
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 30px;
+      color: #fff;
+
+      .modal-player-name {
+        font-size: $player-font-size / 1.2;
+      }
+
+      .modal-input-box {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+    }
+
+    .modal-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      height: 30%;
+
+      .modal-start-btn {
+        height: 50px;
+        border-radius: $btn-radius;
+      }
+
+      .modal-start-btn:hover {
+        background-color: #ebc5c5;
+        color: #1b0909;
+      }
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+  z-index: 100;
 }
 
 .players-section {
-    height: 18vh;
+  height: 18vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  .player-name-div {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    gap: 40px;
+    font-size: $player-font-size * 1.2;
+  }
 }
 
 .play-field-section {
-    height: 65vh;
+  height: 65vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px;
+
+  .win-player-name {
+    font-size: $player-font-size;
+    text-align: center;
+    color: #C40B0B;
+    width: 200px;
+  }
+
+  .play-field {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    grid-auto-rows: 150px;
+    border: $playfield-border;
+  }
+
+  .cell {
+    border: $playfield-border;
     display: flex;
-    justify-content: center;
     align-items: center;
-    
-    .play-field {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(150px, 1fr));
-        grid-auto-rows: 150px;
-        border: $playfield-border;
+    justify-content: center;
+
+    .material-icons-round.md-108 {
+      font-size: 108px;
+      color: rgba(0, 0, 0, 0.9);
     }
 
-    .cell {
-        width: 150px;
-        height: 150px;
-        border: $playfield-border;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .material-icons-round.md-96 {
+      font-size: 96px;
+      color: rgba(196, 11, 11, 0.9);
     }
+  }
 }
 
 .button-restart-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
-    .restart-btn {
-        height: 50px;
-        width: 120px;
-        border-radius: $btn-radius;
-    }
+  .restart-btn {
+    height: 60px;
+    width: 160px;
+    border-radius: $btn-radius;
+    font-size: 22px;
+  }
+
+  .restart-btn:hover {
+    background-color: rgba(196, 11, 11, 0.227);
+    color: #3c1212;
+  }
 }
