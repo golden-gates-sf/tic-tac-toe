@@ -82,6 +82,9 @@ restartBtn.addEventListener('click', () => {
         cell.style.background = '#fff';
         cell.setAttribute('data-status', '0');
     }
+    document.querySelectorAll('.win-player-name').forEach(el => {
+        el.textContent = '';
+    });
     isGameOver = false;
 });
 
